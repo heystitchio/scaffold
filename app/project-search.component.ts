@@ -6,6 +6,12 @@ import { Subject } from 'rxjs/Subject';
 import { ProjectSearchService } from './project-search.service';
 import { Project } from './project';
 
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   moduleId: module.id,
   selector: 'project-search',
