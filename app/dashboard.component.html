@@ -1,9 +1,66 @@
-<h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
+<h3>Featured Projects</h3>
+<div class="grid grid-pad featured">
+  <div *ngFor="let allproject of projects; let i=index" (click)="gotoProject(allproject)"  class="col-md-4">
+    <div class="module project" *ngIf="i<6">
+	  <div class="image">
+		<img src="app/images/{{allproject.img}}.jpg" alt="{{allproject.name}}">
+	  </div>
+	  <div class="content">
+      <h4>{{allproject.name}}</h4>
+		<p class="cat {{allproject.cat | lowercase}}">{{allproject.cat}}</p>
+		<div class="clearfix"></div>
+		<p>{{allproject.introDesc}}</p>
+	  </div>
     </div>
   </div>
 </div>
-<hero-search></hero-search>
+
+
+<div class="grid grid-pad">
+  <div *ngFor="let cat of categories"  class="col-md-3">
+    <div class="module category">
+	  <div class="content">
+      <h4>{{cat.name}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3>Top Technology Projects</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let technologyproject of (projects | CatPipe : 'Technology'); let i=index" (click)="gotoProject(technologyproject)"  class="col-md-3">
+    <div class="module project" *ngIf="i<8">
+	  <div class="content">
+      <h4>{{technologyproject.name}}</h4>
+		<p>{{technologyproject.introDesc}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3>Top Startup Projects</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let startupproject of (projects | CatPipe : 'Startup'); let i=index" (click)="gotoProject(startupproject)"  class="col-md-3">
+    <div class="module project" *ngIf="i<8">
+	  <div class="content">
+      <h4>{{startupproject.name}}</h4>
+		<p>{{startupproject.introDesc}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h3>Top Website Projects</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let websiteproject of (projects | CatPipe : 'Website'); let i=index" (click)="gotoProject(websiteproject)"  class="col-md-3">
+    <div class="module project" *ngIf="i<8">
+	  <div class="content">
+      <h4>{{websiteproject.name}}</h4>
+		<p>{{websiteproject.introDesc}}</p>
+      </div>
+    </div>
+  </div>
+</div>

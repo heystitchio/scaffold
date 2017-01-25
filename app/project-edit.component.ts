@@ -1,23 +1,24 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Project } from './project';
+import { ProjectService } from './project.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
-  templateUrl: 'hero-detail.component.html',
-  styleUrls: ['hero-detail.component.css']
+  selector: 'my-project-detail',
+  templateUrl: 'project-detail.component.html',
+  styleUrls: ['project-detail.component.css']
 })
-export class HeroDetailComponent implements OnInit {
-  @Input() hero: Hero;
+
+export class ProjectEditComponent implements OnInit {
+  @Input() project: Project;
   @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
 
   constructor(
-    private heroService: HeroService,
+    private projectService: ProjectService,
     private route: ActivatedRoute) {
   }
 
@@ -26,27 +27,27 @@ export class HeroDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         let id = +params['id'];
         this.navigated = true;
-        this.heroService.getHero(id)
-            .then(hero => this.hero = hero);
+        this.projectService.getProject(id)
+            .then(project => this.project = project);
       } else {
         this.navigated = false;
-        this.hero = new Hero();
+        this.project = new Project();
       }
     });
   }
 
   save(): void {
-    this.heroService
-        .save(this.hero)
-        .then(hero => {
-          this.hero = hero; // saved hero, w/ id if new
-          this.goBack(hero);
+    this.projectService
+        .save(this.project)
+        .then(project => {
+          this.project = project; // saved Project, w/ id if new
+          this.goBack(project);
         })
         .catch(error => this.error = error); // TODO: Display error message
   }
 
-  goBack(savedHero: Hero = null): void {
-    this.close.emit(savedHero);
+  goBack(savedProject: Project = null): void {
+    this.close.emit(savedProject);
     if (this.navigated) { window.history.back(); }
   }
 }

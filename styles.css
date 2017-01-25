@@ -1,5 +1,77 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'nexa_light';
+    src: url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.eot');
+    src: url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.woff2') format('woff2'),
+         url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.woff') format('woff'),
+         url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.ttf') format('truetype'),
+         url('assets/fonts/nexa_light/Nexa_Free_Light-webfont.svg#nexa_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'nexa_bold';
+    src: url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.eot');
+    src: url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.woff2') format('woff2'),
+         url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.woff') format('woff'),
+         url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.ttf') format('truetype'),
+         url('assets/fonts/nexa_bold/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* General */
+
 h2 { color: #444; font-weight: lighter; }
 body { margin: 2em; }
 body, input[text], button { color: #888; font-family: Cambria, Georgia; }
 button { padding: 0.2em; font-size: 14px}
-* { font-family: Arial; }
+* { font-family: "nexa_light"; }
+.navbar-brand { font-family: "nexa_bold"; }
+h1, h2, h3, h4, h5, h6 { font-family: "nexa_bold" !important; }
+footer {
+	background: #EDEFF1;
+	height: auto;
+	padding:50px 0px;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #DDDDDD;
+}
+
+footer ul {
+	font-size: 13px;
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	margin-top: 15px;
+	color: #7F8C8D;
+}
+footer ul li a {
+	padding: 0 0 5px 0;
+	display: block;
+}
+footer a {
+	color: #78828D
+}
+
+/* Social */
+
+.footer { width:100%; padding:50px 0px; background-color:#19202b; text-align:center; margin-top:50px; }
+.fa-twitter { color: #4099FF; }
+.fa-facebook { color: #3B5998; }
+.fa-youtube-play { color: #e52d27; }
+.fa-google-plus { color: #e52d27; }
+.fa-rss { color: #FF6600; }
+.fa-vine { color: #00a478; }
+.fa-flickr { color: #ff0084; }
+.fa-twitch { color: #6441A5; }
+.fa-linkedin { color: #007bb6; }
+.fa { opacity: 0.7; transition: 1s; -webkit-transition: 1s; }
+.fa:hover{ opacity: 1; transition: 1s; -webkit-transition: 1s; }

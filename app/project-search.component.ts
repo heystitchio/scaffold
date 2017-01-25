@@ -3,22 +3,22 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { HeroSearchService } from './hero-search.service';
-import { Hero } from './hero';
+import { ProjectSearchService } from './project-search.service';
+import { Project } from './project';
 
 @Component({
   moduleId: module.id,
-  selector: 'hero-search',
-  templateUrl: 'hero-search.component.html',
-  styleUrls: ['hero-search.component.css'],
-  providers: [HeroSearchService]
+  selector: 'project-search',
+  templateUrl: 'project-search.component.html',
+  styleUrls: ['project-search.component.css'],
+  providers: [ProjectSearchService]
 })
-export class HeroSearchComponent implements OnInit {
-  heroes: Observable<Hero[]>;
+export class ProjectSearchComponent implements OnInit {
+  projects: Observable<Project[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
-    private heroSearchService: HeroSearchService,
+    private projectSearchService: ProjectSearchService,
     private router: Router) { }
 
   search(term: string): void {
@@ -27,23 +27,23 @@ export class HeroSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.heroes = this.searchTerms
+    this.projects = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time
         // return the http search observable
-        ? this.heroSearchService.search(term)
-        // or the observable of empty heroes if no search term
-        : Observable.of<Hero[]>([]))
+        ? this.projectSearchService.search(term)
+        // or the observable of empty projects if no search term
+        : Observable.of<Project[]>([]))
       .catch(error => {
         // TODO: real error handling
         console.log(error);
-        return Observable.of<Hero[]>([]);
+        return Observable.of<Project[]>([]);
       });
   }
 
-  gotoDetail(hero: Hero): void {
-    let link = ['/detail', hero.id];
+  gotoDetail(project: Project): void {
+    let link = ['/detail', project.id];
     this.router.navigate(link);
   }
 }

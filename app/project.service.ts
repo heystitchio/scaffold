@@ -3,39 +3,39 @@ import { Headers, Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from './hero';
+import { Project } from './project';
 
 @Injectable()
-export class HeroService {
-  private heroesUrl = 'app/heroes';  // URL to web api
+export class ProjectService {
+  private projectsUrl = 'app/projects';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getHeroes(): Promise<Hero[]> {
+  getProjects(): Promise<Project[]> {
     return this.http
-      .get(this.heroesUrl)
+      .get(this.projectsUrl)
       .toPromise()
-      .then(response => response.json().data as Hero[])
+      .then(response => response.json().data as Project[])
       .catch(this.handleError);
   }
 
-  getHero(id: number): Promise<Hero> {
-    return this.getHeroes()
-      .then(heroes => heroes.find(hero => hero.id === id));
+  getProject(id: number): Promise<Project> {
+    return this.getProjects()
+      .then(projects => projects.find(project => project.id === id));
   }
 
-  save(hero: Hero): Promise<Hero> {
-    if (hero.id) {
-      return this.put(hero);
+  save(project: Project): Promise<Project> {
+    if (project.id) {
+      return this.put(project);
     }
-    return this.post(hero);
+    return this.post(project);
   }
 
-  delete(hero: Hero): Promise<Response> {
+  delete(project: Project): Promise<Response> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.projectsUrl}/${project.id}`;
 
     return this.http
       .delete(url, { headers: headers })
@@ -43,30 +43,30 @@ export class HeroService {
       .catch(this.handleError);
   }
 
-  // Add new Hero
-  private post(hero: Hero): Promise<Hero> {
+  // Add new Project
+  private post(project: Project): Promise<Project> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     return this.http
-      .post(this.heroesUrl, JSON.stringify(hero), { headers: headers })
+      .post(this.projectsUrl, JSON.stringify(project), { headers: headers })
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
   }
 
-  // Update existing Hero
-  private put(hero: Hero): Promise<Hero> {
+  // Update existing Project
+  private put(project: Project): Promise<Project> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.projectsUrl}/${project.id}`;
 
     return this.http
-      .put(url, JSON.stringify(hero), { headers: headers })
+      .put(url, JSON.stringify(project), { headers: headers })
       .toPromise()
-      .then(() => hero)
+      .then(() => project)
       .catch(this.handleError);
   }
 

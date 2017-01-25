@@ -9,8 +9,10 @@ import { InMemoryDataService } from './in-memory-data.service';
 import './rxjs-extensions';
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
-import { HeroService } from './hero.service';
-import { HeroSearchComponent } from './hero-search.component';
+import { ProjectService } from './project.service';
+import { CategoryService } from './category.service';
+import { ProjectSearchComponent } from './project-search.component';
+import { CatPipe } from './project-category.pipe';
 
 @NgModule({
   imports: [
@@ -22,11 +24,12 @@ import { HeroSearchComponent } from './hero-search.component';
   ],
   declarations: [
     AppComponent,
-    HeroSearchComponent,
-    routedComponents
+    ProjectSearchComponent,
+    routedComponents,
+	  CatPipe
   ],
   providers: [
-    HeroService
+    ProjectService, CategoryService
   ],
   bootstrap: [AppComponent]
 })

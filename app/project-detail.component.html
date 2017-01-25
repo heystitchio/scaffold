@@ -1,0 +1,61 @@
+<div class="container">
+<div *ngIf="project">
+	<div class="row">
+		<div class="col-xs-12">
+  			<button (click)="goBack()">Go Back</button>
+			<p> </p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7">
+			<img src="app/images/{{project.img}}.jpg">
+		</div>
+		<div class="col-sm-5">
+			<div class="projectMain">
+  				<h1>{{project.name}}</h1>
+				<p>{{project.cat}}</p>
+				<h4>{{project.tagline}}</h4>
+			</div>
+			<div class="projectExtra">
+				<p><strong>Project Stage: </strong>{{project.stage}}</p>
+				<p>Creator: {{project.creator}}</p>
+				<p><a href="#">Contact {{project.creator}}</a></p>
+			</div>
+  		</div>
+	</div>
+	<p> </p>
+	<hr />
+	<div class="row">
+		<div class="col-sm-8">
+			<h3>Project Overview</h3>
+			<p>{{project.fullDesc}}</p>
+			<hr />
+			<h3>Project Team</h3>
+			<p>{{project.fullDesc}}</p>
+			<hr />
+			<h3>Looking for</h3>
+			<p>{{project.fullDesc}}</p>
+		</div>
+		<div class="col-sm-4">
+			<h2>Projected Milestones</h2>
+			<div class="panel panel-default">
+  				<div class="panel-heading"><h4>Milestone #1</h4></div>
+  				<div class="panel-body"><p></p></div>
+			</div>
+			<div class="panel panel-default">
+  				<div class="panel-heading"><h4>Milestone #2</h4></div>
+  				<div class="panel-body"><p></p></div>
+			</div>
+			<div class="panel panel-default">
+  				<div class="panel-heading"><h4>Milestone #3</h4></div>
+  				<div class="panel-body"><p></p></div>
+			</div>
+			<div class="panel panel-default">
+  				<div class="panel-heading"><h4>Milestone #4</h4></div>
+  				<div class="panel-body"><p></p></div>
+			</div>
+		</div>
+	</div>
+ <!-- <button (click)="save()">Save</button> -->
+</div>
+</div>
